@@ -2,460 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Movies and Coffee Podcast</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta
-    name="description"
-    content="Movies and Coffee is a podcast where we chat about films, TV, and everything in between over a warm cup of coffee."
-  />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Movie Java with Jimmy C</title>
   <style>
-    :root {
-      --bg: #0f172a;
-      --bg-light: #f7f3ee;
-      --accent: #c58b45;
-      --accent-dark: #8a5a28;
-      --text-main: #0b1020;
-      --text-light: #e5e7eb;
-    }
-
-    * {
-      box-sizing: border-box;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #1e150c;
+      color: #d7b26a;
       margin: 0;
       padding: 0;
-    }
-
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        sans-serif;
-      background: var(--bg);
-      color: var(--text-light);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    .page {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      padding: 2.5rem 1.5rem 3rem;
-      background: radial-gradient(circle at top left, #1f2937 0, #020617 55%);
-    }
-
-    .nav {
-      max-width: 1000px;
-      margin: 0 auto 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .logo {
-      font-size: 1.3rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .tag {
-      font-size: 0.8rem;
-      padding: 0.15rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(248, 250, 252, 0.3);
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-    }
-
-    .hero {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      gap: 2rem;
-      grid-template-columns: minmax(0, 3fr);
-    }
-
-    @media (min-width: 800px) {
-      .hero {
-        grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
-        align-items: center;
-      }
-    }
-
-    .hero-title {
-      font-size: clamp(2.2rem, 3vw + 1.5rem, 3.2rem);
-      font-weight: 800;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-subtitle {
-      font-size: 1.05rem;
-      max-width: 34rem;
-      color: #cbd5f5;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      margin-bottom: 1.75rem;
-    }
-
-    .btn {
-      padding: 0.7rem 1.3rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      border: none;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.4rem;
-      transition: transform 0.05s ease, box-shadow 0.1s ease,
-        background 0.1s ease;
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: var(--accent);
-      color: #111827;
-      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.3);
-      font-weight: 600;
-    }
-
-    .btn-primary:hover {
-      background: var(--accent-dark);
-      transform: translateY(-1px);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: #e5e7eb;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(15, 23, 42, 0.8);
-      transform: translateY(-1px);
-    }
-
-    .hero-note {
-      font-size: 0.9rem;
-      color: #9ca3af;
-    }
-
-    .hero-card {
-      background: rgba(15, 23, 42, 0.9);
-      border-radius: 1.2rem;
-      padding: 1.5rem;
-      border: 1px solid rgba(148, 163, 184, 0.55);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.7);
-    }
-
-    .hero-card h2 {
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #9ca3af;
-      margin-bottom: 0.5rem;
-    }
-
-    .hero-card-title {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 0.35rem;
-    }
-
-    .hero-card-meta {
-      font-size: 0.85rem;
-      color: #9ca3af;
-      margin-bottom: 0.75rem;
-    }
-
-    .hero-card-summary {
-      font-size: 0.95rem;
-      margin-bottom: 1rem;
-      color: #e5e7eb;
-    }
-
-    .mini-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.78rem;
-      padding: 0.2rem 0.5rem;
-      border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.7);
-      color: #9ca3af;
-      margin-right: 0.4rem;
-      margin-bottom: 0.4rem;
-    }
-
-    main {
-      background: var(--bg-light);
-      color: var(--text-main);
-      padding: 2.5rem 1.5rem 3rem;
-    }
-
-    .content {
-      max-width: 1000px;
-      margin: 0 auto;
-      display: grid;
-      gap: 2rem;
-    }
-
-    @media (min-width: 900px) {
-      .content {
-        grid-template-columns: minmax(0, 2.4fr) minmax(0, 1.6fr);
-      }
-    }
-
-    section {
-      margin-bottom: 1.5rem;
-    }
-
-    h2.section-title {
-      font-size: 1.2rem;
-      text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: #64748b;
-      margin-bottom: 0.4rem;
-    }
-
-    h3 {
-      font-size: 1.15rem;
-      margin-bottom: 0.3rem;
-    }
-
-    p {
-      margin-bottom: 0.7rem;
-      font-size: 0.98rem;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 1rem;
-      padding: 1.2rem 1.3rem;
-      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
-      border: 1px solid #e2e8f0;
-      margin-bottom: 1rem;
-    }
-
-    .listen-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.6rem;
-      margin-top: 0.3rem;
-    }
-
-    .listen-pill {
-      background: #0f172a;
-      color: #e5e7eb;
-      border-radius: 999px;
-      padding: 0.4rem 0.9rem;
-      font-size: 0.85rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      transition: transform 0.05s ease, box-shadow 0.1s ease,
-        background 0.1s ease;
-    }
-
-    .listen-pill:hover {
-      background: #020617;
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(15, 23, 42, 0.4);
-    }
-
-    .label {
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.75rem;
-      color: #9ca3af;
-      margin-bottom: 0.2rem;
-    }
-
-    .footer {
-      border-top: 1px solid #e5e7eb;
-      margin-top: 2rem;
-      padding-top: 1rem;
-      font-size: 0.85rem;
-      color: #6b7280;
       text-align: center;
     }
-
-    .footer a {
-      color: #4b5563;
-      text-decoration: underline;
-      text-decoration-thickness: 1px;
-      text-underline-offset: 3px;
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    h1 {
+      margin-top: 20px;
+      font-size: 2.5rem;
+    }
+    p {
+      font-size: 1.15rem;
+      line-height: 1.6;
+    }
+    a.button {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #d7b26a;
+      color: #1e150c;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      font-size: 1.1rem;
+    }
+    a.button:hover {
+      background-color: #e8c98c;
     }
   </style>
 </head>
 <body>
-  <div class="page">
-    <header>
-      <div class="nav">
-        <div class="logo">Movies &amp; Coffee</div>
-        <div class="tag">Weekly film talk</div>
-      </div>
+  <div class="container">
+    <img src="cupreels4.png" alt="Movie Java Poster" />
 
-      <div class="hero">
-        <div>
-          <h1 class="hero-title">Movies, coffee, and good conversation.</h1>
-          <p class="hero-subtitle">
-            Movies &amp; Coffee is a laid-back podcast where we chat about
-            films, TV, and storytelling the way friends would over a fresh cup
-            of coffee.
-          </p>
+    <h1>Movie Java</h1>
+    <h2>Hosted by Jimmy C</h2>
 
-          <div class="hero-buttons">
-            <a
-              href="#listen"
-              class="btn btn-primary"
-            >
-              ▶ Start listening
-            </a>
-            <a href="#about" class="btn btn-ghost">Learn more</a>
-          </div>
+    <p>
+      Movie Java is a cozy, laid‑back show where movies meet conversation.
+      Each episode blends film talk, fun insights, and the warm vibe of a coffee shop.
+      Whether you're into cult classics, new releases, or hidden gems, grab a cup and hang out.
+    </p>
 
-          <p class="hero-note">
-            New episodes every week · Hosted by James C. Clemmons
-          </p>
-        </div>
-
-        <aside class="hero-card">
-          <h2>Latest Episode</h2>
-          <div class="hero-card-title">
-            Episode 01 – Title of Your Latest Episode
-          </div>
-          <div class="hero-card-meta">Approx. 45 min · Released: Jan 1, 2025</div>
-          <p class="hero-card-summary">
-            Write a short two–three sentence description of your most recent
-            episode here. What movie are you talking about? Any fun angles or
-            hot takes?
-          </p>
-          <div style="font-size: 0.85rem; color: #9ca3af; margin-bottom: 0.75rem;">
-            <!-- Replace the text below with your real embed code from your host
-                 (Spotify, Apple Podcasts, etc.) -->
-            🎧 Embed your audio player here (Spotify, Apple Podcasts, or your host).
-          </div>
-          <div>
-            <span class="mini-pill">☕ Coffee &amp; conversation</span>
-            <span class="mini-pill">🎬 Film &amp; TV</span>
-            <span class="mini-pill">⭐ Casual, friendly vibe</span>
-          </div>
-        </aside>
-      </div>
-    </header>
-
-    <main>
-      <div class="content">
-        <div>
-          <section id="about">
-            <h2 class="section-title">About the show</h2>
-            <div class="card">
-              <h3>What is Movies &amp; Coffee?</h3>
-              <p>
-                Movies &amp; Coffee is your weekly excuse to slow down, pour a
-                cup, and dive into the stories we love on screen. From classic
-                films to new releases and streaming gems, we talk about what
-                works, what doesn’t, and why it all matters.
-              </p>
-              <p>
-                Whether you’re a casual movie watcher or a full-on film nerd,
-                pull up a chair—there’s always a seat at the table.
-              </p>
-            </div>
-          </section>
-
-          <section>
-            <h2 class="section-title">Episodes</h2>
-            <div class="card">
-              <h3>Where to find the episodes</h3>
-              <p>
-                All episodes are available on your favorite podcast apps. You
-                can also listen directly on our hosting page or through the
-                embedded player above.
-              </p>
-              <p style="font-size: 0.9rem; color: #4b5563;">
-                Tip: you can turn this section into an episode list later by
-                adding links or embedding a playlist from your podcast host.
-              </p>
-            </div>
-          </section>
-        </div>
-
-        <aside id="listen">
-          <section>
-            <h2 class="section-title">Listen &amp; subscribe</h2>
-            <div class="card">
-              <p class="label">Available on</p>
-              <div class="listen-links">
-                <!-- Replace these # links with your real show links -->
-                <a class="listen-pill" href="#" target="_blank" rel="noopener">
-                   Apple Podcasts
-                </a>
-                <a class="listen-pill" href="#" target="_blank" rel="noopener">
-                  🎧 Spotify
-                </a>
-                <a class="listen-pill" href="#" target="_blank" rel="noopener">
-                  🟨 Amazon Music
-                </a>
-                <a class="listen-pill" href="#" target="_blank" rel="noopener">
-                  ▶ YouTube / YouTube Music
-                </a>
-                <a class="listen-pill" href="#" target="_blank" rel="noopener">
-                  🌐 RSS Feed
-                </a>
-              </div>
-            </div>
-          </section>
-
-          <section>
-            <h2 class="section-title">Contact</h2>
-            <div class="card">
-              <p>
-                Have a movie suggestion, question, or want to say hi?
-              </p>
-              <p>
-                Email:
-                <a href="mailto:jimmyc@moviejava.com">
-                  jimmyc@moviejava.com
-                </a>
-              </p>
-              <p>
-                You can also reach out on social media (add your links here:
-                Instagram, X, Threads, etc.).
-              </p>
-            </div>
-          </section>
-        </aside>
-      </div>
-
-      <footer class="footer">
-        <p>
-          © <span id="year"></span> Movies &amp; Coffee · All rights reserved.
-        </p>
-        <p>
-          Built with ❤️ and hosted on
-          <a href="https://pages.github.com" target="_blank" rel="noopener">
-            GitHub Pages
-          </a>.
-        </p>
-      </footer>
-    </main>
+    <a class="button" href="#">Listen to the Latest Episode</a>
   </div>
+</body>
+</html>
 
-  <script>
     // Set current year in footer automatically
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
