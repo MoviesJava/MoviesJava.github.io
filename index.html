@@ -13,49 +13,162 @@
       padding: 0;
       text-align: center;
     }
+
     .container {
-      max-width: 800px;
+      max-width: 900px;
       margin: 0 auto;
-      padding: 20px;
+      padding: 20px 20px 40px;
     }
-    img {
+
+    img.hero {
       width: 100%;
       border-radius: 8px;
+      display: block;
     }
+
     h1 {
       margin-top: 20px;
-      font-size: 2.5rem;
+      font-size: 2.7rem;
+      letter-spacing: 1px;
     }
+
     h2 {
-      margin-top: 10px;
-      font-size: 1.5rem;
+      margin-top: 8px;
+      font-size: 1.4rem;
       font-weight: normal;
+      opacity: 0.9;
     }
+
     p {
-      font-size: 1.15rem;
-      line-height: 1.6;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      margin: 12px 0;
     }
+
+    .buttons {
+      margin-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
     a.button {
       display: inline-block;
-      margin-top: 20px;
-      padding: 12px 24px;
+      padding: 12px 22px;
       background-color: #d7b26a;
       color: #1e150c;
       text-decoration: none;
       border-radius: 6px;
       font-weight: bold;
-      font-size: 1.1rem;
+      font-size: 1rem;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+      border: none;
     }
+
     a.button:hover {
       background-color: #e8c98c;
+      transform: translateY(-1px);
+    }
+
+    a.button.secondary {
+      background-color: transparent;
+      color: #d7b26a;
+      border: 1px solid #d7b26a;
+    }
+
+    a.button.secondary:hover {
+      background-color: #d7b26a;
+      color: #1e150c;
+    }
+
+    section {
+      margin-top: 40px;
+      text-align: left;
+    }
+
+    section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 10px;
+      text-align: left;
+    }
+
+    .section-intro {
+      font-size: 0.98rem;
+      opacity: 0.9;
+      margin-bottom: 14px;
+    }
+
+    .player-wrapper {
+      margin-top: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      background-color: #120c06;
+      padding: 8px;
+    }
+
+    iframe {
+      border: none;
+    }
+
+    .social-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .social-links a {
+      display: inline-block;
+      padding: 8px 14px;
+      background-color: #2b1d0f;
+      border-radius: 20px;
+      text-decoration: none;
+      color: #f2d59a;
+      font-size: 0.95rem;
+    }
+
+    .social-links a:hover {
+      background-color: #3a2714;
+    }
+
+    .contact-box {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 8px;
+      background-color: #2b1d0f;
+      font-size: 0.98rem;
+    }
+
+    .contact-box a {
+      color: #f2d59a;
+      text-decoration: underline;
+    }
+
+    .footer-note {
+      margin-top: 36px;
+      font-size: 0.9rem;
+      opacity: 0.8;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2.1rem;
+      }
+      h2 {
+        font-size: 1.2rem;
+      }
+      .container {
+        padding: 16px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- Use the same filename as your poster image in the repo.
-         If it's different, change cupreels4.png to that name. -->
-    <img src="cupreels4.png" alt="Movie Java Poster" />
+    <!-- Hero / Poster -->
+    <img src="cupreels4.png" alt="Movie Java Poster" class="hero" />
 
     <h1>Movie Java</h1>
     <h2>Hosted by Jimmy C</h2>
@@ -63,14 +176,121 @@
     <p>
       Movie Java is a cozy, laid-back show where movies meet conversation.
       Each episode blends film talk, fun insights, and the warm vibe of a coffee shop.
-      Whether you're into cult classics, new releases, or hidden gems,
-      grab a cup and hang out.
+      Whether you're into cult classics, new releases, or hidden gems, grab a cup and hang out.
     </p>
 
-    <a class="button" href="https://open.spotify.com/episode/6N7dHVsezgdtrNDIpejgbz?si=kq9LhoaiTiev5O-bOpQscA" target="_blank" rel="noopener noreferrer">
-      Listen to the Latest Episode
-    </a>
+    <!-- Primary CTA buttons -->
+    <div class="buttons">
+      <!-- RSS feed button (podcast apps can use this) -->
+      <a
+        class="button"
+        href="https://media.rss.com/movies-and-coffee-with-jimmy-c/feed.xml"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        ☕ Get the Latest Episode (RSS)
+      </a>
+
+      <!-- Amazon Music show page -->
+      <a
+        class="button secondary"
+        href="https://music.amazon.ca/fr-ca/podcasts/560adbf4-4f72-4c61-8866-2b87bb031e3c/movies-and-java-with-jimmy-c"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        🎧 Listen on Amazon Music
+      </a>
+
+      <!-- OPTIONAL: add more platforms later by updating the # links -->
+      <!--
+      <a class="button secondary" href="#" target="_blank" rel="noopener noreferrer">
+        🎬 Listen on Apple Podcasts
+      </a>
+      <a class="button secondary" href="#" target="_blank" rel="noopener noreferrer">
+        🎙️ Listen on Spotify
+      </a>
+      -->
+    </div>
+
+    <!-- Auto-updating embedded player (latest episodes) -->
+    <section>
+      <h3>Latest Episodes</h3>
+      <p class="section-intro">
+        Hit play right here on the site, or use the RSS feed above in your favorite podcast app.
+      </p>
+
+      <div class="player-wrapper">
+        <!-- RSS.com show-level player.
+             The 'limit' parameter controls how many episodes appear in the playlist.
+             You can tweak ?limit=5 to another number if you like. -->
+        <iframe
+          src="https://player.rss.com/movies-and-coffee-with-jimmy-c?limit=5"
+          title="Movie Java with Jimmy C"
+          width="100%"
+          height="345"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+          scrolling="no"
+        >
+          <a href="https://rss.com/podcasts/movies-and-coffee-with-jimmy-c/">
+            Movie Java with Jimmy C Podcast
+          </a>
+        </iframe>
+      </div>
+    </section>
+
+    <!-- Social / platform style links -->
+    <section>
+      <h3>Follow & Share</h3>
+      <p class="section-intro">
+        Love the show? Share it with a friend, leave a review, or send in your movie and coffee recommendations.
+      </p>
+
+      <div class="social-links">
+        <!-- Email is real & working today -->
+        <a href="mailto:jimmyc@moviejava.com">📬 Email Jimmy</a>
+
+        <!-- Add your social profiles when you're ready by replacing # with real URLs -->
+        <!-- Example:
+          https://instagram.com/yourhandle
+          https://www.facebook.com/yourpage
+          https://www.youtube.com/@yourchannel
+        -->
+        <a href="#" target="_blank" rel="noopener noreferrer">📸 Instagram (coming soon)</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">📘 Facebook (coming soon)</a>
+        <a href="#" target="_blank" rel="noopener noreferrer">▶️ YouTube (coming soon)</a>
+      </div>
+    </section>
+
+    <!-- Contact / booking / sponsorship -->
+    <section>
+      <h3>Contact & Guests</h3>
+
+      <div class="contact-box">
+        <p>
+          Want to be a guest, suggest a film, or talk sponsorships?
+          Reach out any time at
+          <a href="mailto:jimmyc@moviejava.com">jimmyc@moviejava.com</a>.
+        </p>
+        <p>
+          Whether you're a filmmaker, a fellow coffee addict, or just someone who loves a good movie chat,
+          Jimmy would love to hear from you.
+        </p>
+      </div>
+    </section>
+
+    <p class="footer-note">
+      &copy; <span id="year"></span> Movie Java with Jimmy C. All rights reserved.
+    </p>
   </div>
+
+  <script>
+    // Simple script to keep the year current
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
+
 
