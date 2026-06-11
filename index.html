@@ -45,7 +45,25 @@
 
 /* etc... */
 
+.countdown-box {
+  margin-top: 25px;
+  padding: 18px;
+  border: 2px solid #c9a227;
+  border-radius: 8px;
+}
 
+.countdown-label {
+  color: #c9a227;
+  font-weight: bold;
+  letter-spacing: 3px;
+  margin-bottom: 8px;
+}
+
+#timer {
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 </style>
 
 <head>
@@ -240,8 +258,15 @@
   </p>
 
   <p>
-    New guests. New movies. Fresh coffee.
-  </p>
+  New guests. New movies. Fresh coffee.
+</p>
+
+<div id="countdown" class="countdown-box">
+  <p class="countdown-label">COUNTDOWN TO PREMIERE</p>
+  <div id="timer">Loading...</div>
+</div>
+
+</div>
 </div>
 
     <p>
@@ -360,6 +385,26 @@
     // Simple script to keep the year current
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+ <script>
+const launchDate = new Date("June 15, 2026 00:00:00").getTime();
+
+const countdown = setInterval(function() {
+  const now = new Date().getTime();
+  const distance = launchDate - now;
+
+  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+
+  document.getElementById("timer").innerHTML =
+    days + " DAYS · " + hours + " HOURS · " + minutes + " MINUTES";
+
+  if (distance < 0) {
+    clearInterval(countdown);
+    document.getElementById("timer").innerHTML = "SEASON 2 IS NOW LIVE!";
+  }
+}, 1000);
+</script>
 </body>
 </html>
 
